@@ -29,8 +29,8 @@ jobs:
       - name: Building
         run: |
           echo "this is nice" >> nice.txt
-          - name: Archive result
-      - name: Upload    
+          
+      - name: Upload Artifact  
         uses: actions/upload-artifact@v3
         with:
           name: code
@@ -48,8 +48,15 @@ jobs:
       - uses: actions/checkout@v3
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Run a multi-line script        
+        uses: actions/download-artifact@v3.0.1
+        with:
+          name: code
+
+       # Runs a set of commands using the runners shell
+      - name: Unzip
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          unzip code.zip
+          cd code
+          cat nice.txt
 
