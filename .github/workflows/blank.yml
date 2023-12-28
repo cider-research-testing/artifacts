@@ -31,7 +31,7 @@ jobs:
           echo "this is nice" >> nice.txt
 
       - name: Zipping
-      - run: |
+        run: |
           zip code.zip nice.txt
           
       - name: Upload Artifact  
