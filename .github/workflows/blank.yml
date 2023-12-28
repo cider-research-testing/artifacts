@@ -57,6 +57,5 @@ jobs:
       - name: Unzip & Print
         run: |
           unzip code.zip
-          cd code
           cat nice.txt
 
