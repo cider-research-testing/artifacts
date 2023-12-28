@@ -29,13 +29,16 @@ jobs:
       - name: Building
         run: |
           echo "this is nice" >> nice.txt
+
+      - name: Zipping
+      - run: |
+          zip code.zip nice.txt
           
       - name: Upload Artifact  
         uses: actions/upload-artifact@v3
         with:
           name: code
-          path: |
-            nice.txt
+          path: code.zip
 
   deploy:
     # The type of runner that the job will run on
@@ -44,17 +47,14 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script        
+      - name: Download Artifact       
         uses: actions/download-artifact@v3.0.1
         with:
           name: code
 
        # Runs a set of commands using the runners shell
-      - name: Unzip
+      - name: Unzip & Print
         run: |
           unzip code.zip
           cd code
