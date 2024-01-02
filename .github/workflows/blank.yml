@@ -31,11 +31,7 @@ jobs:
           
       - name: Sleep
         run: |          
-          sleep 60
-          
-      - name: Error
-        run: |
-          cat bllvsf
+          sleep 10
           
       # Runs a set of commands using the runners shell
       - name: Building
@@ -66,6 +62,10 @@ jobs:
         with:
           name: code
 
+      - name: Sleep
+        run: |          
+          sleep 10
+
        # Runs a set of commands using the runners shell
       - name: Unzip & Print
         run: |
@@ -73,6 +73,6 @@ jobs:
           cat nice.txt
           # Runs a set of commands using the runners shell
           
-      - name: Error
-        run: |
-          cat bllvsf
+      #- name: Error
+      #  run: |
+      #    cat bllvsf
