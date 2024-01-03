@@ -24,6 +24,6 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: go-result
-          github-token: ${{ secrets.GH_TOKEN }} # token with actions:read permissions on target repo
+          github-token: ${{ secrets.GITHUB_TOKEN }} # token with actions:read permissions on target repo
           repository: milvus-io/milvus
           run-id: 7353055100
