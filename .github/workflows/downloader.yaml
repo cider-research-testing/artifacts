@@ -21,9 +21,13 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
 
-      - name: Wait
+      - name: Print SHA
         run: |    
-          echo $GITHUB_SHA
+          echo ${{ env.GITHUB_SHA }}
+
+
+      - name: Wait
+        run: |              
           sleep 60
       
 
