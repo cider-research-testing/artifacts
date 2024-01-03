@@ -43,7 +43,7 @@ jobs:
           zip code.zip nice.txt
           
       - name: Upload Artifact  
-        uses: actions/upload-artifact@4
+        uses: actions/upload-artifact@v4
         with:
           name: code
           path: code.zip
