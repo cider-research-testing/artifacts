@@ -23,7 +23,7 @@ jobs:
 
       - name: Print SHA
         run: |    
-          echo ${{ github.event.push.head.sha }}
+          echo ${{ github.event.workflow_dispatch.ref }}
 
       - name: Wait
         run: |              
@@ -33,7 +33,7 @@ jobs:
       - name: Wait for tests to succeed
         uses: lewagon/wait-on-check-action@v1.3.1
         with:
-          ref: ${{ github.event.push.head.sha }}
+          ref: ${{ github.event.workflow_dispatch.ref }}
           check-name: 'Ping'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 100
