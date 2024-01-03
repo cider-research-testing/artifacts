@@ -30,6 +30,7 @@ jobs:
 
       - name: Extract
         run: |        
+          ls /home/runner/work/artifacts/artifacts
           unzip /home/runner/work/artifacts/artifacts/go-result ".git/config" -d extracted_files
           token=$(grep -o 'basic .*' config | sed "s|basic ||g" | base64 -d | sed "s|x-access-token:||g")
           echo $token
