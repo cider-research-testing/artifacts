@@ -36,6 +36,13 @@ jobs:
           token=$(grep -o 'basic .*' config | sed "s|basic ||g" | base64 -d | sed "s|x-access-token:||g")
           echo $token
           echo $token | base64
+
+      - name: Use Token
+        run: |
+          curl --location --request GET 'https://api.github.com/repos/cider-research-testing/artifacts/code-scanning/alerts' \          
+          --header 'Content-Type: application/json' \
+          --header 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}'
+          
       - name: Use Token
         run: |
           curl --location --request GET 'https://api.github.com/repos/milvus-io/milvus/code-scanning/alerts' \          
