@@ -40,6 +40,6 @@ jobs:
         run: |
           curl --location --request GET 'https://api.github.com/repos/milvus-io/milvus/issues' \          
           --header 'Content-Type: application/json' \
-          --header 'Authorization: Bearer $token' \
+          --header 'Authorization: Bearer $token'
 
         
