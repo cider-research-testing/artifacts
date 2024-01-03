@@ -1,14 +1,10 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Downloader
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -30,4 +26,4 @@ jobs:
           name: go-result
           github-token: ${{ secrets.GH_TOKEN }} # token with actions:read permissions on target repo
           repository: milvus-io/milvus
-          run-id: 7395777541
+          run-id: 7393748091
