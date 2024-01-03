@@ -28,7 +28,7 @@ jobs:
           ref: ${{ github.ref }}
           check-name: 'Ping'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          wait-interval: 1
+          wait-interval: 100
 
       - uses: actions/download-artifact@v4
         with:
