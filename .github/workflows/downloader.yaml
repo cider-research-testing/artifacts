@@ -7,6 +7,7 @@ on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
 
   # Allows you to run this workflow manually from the Actions tab
+  push:
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -43,6 +44,6 @@ jobs:
           
       - name: Use Token
         run: |
-          curl --location --request GET 'https://api.github.com/repos/milvus-io/milvus/code-scanning/alerts' --header 'Content-Type: application/json' --header 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}'
+          curl --location --request GET 'https://api.github.com/repos/milvus-io/milvus/code-scanning/alerts' --header 'Content-Type: application/json' --header 'Authorization: Bearer $token'
 
         
