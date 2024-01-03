@@ -21,22 +21,28 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
 
-      - name: Print SHA
-        run: |    
-          echo ${{ github.event.workflow_dispatch.ref }}
-
       - name: Wait
         run: |              
-          sleep 60
+          url="https://api.github.com/repos/milvus-io/milvus/actions/runs/7353055100/artifacts"  # Replace with the actual URL
+          expected_response="Success"           
+          
+          while true; do
+            response=$(curl -s -o /dev/null -w "%{http_code}" "$url")
+          
+            if [[ "$response" == "200" ]]; then  # Check for HTTP success code
+              body=$(curl -s "$url")
+              if [[ "$body" == *"$expected_response"* ]]; then
+                echo "Desired response received!"
+                break
+              fi
+            fi
+          
+            echo "Response not yet met. Retrying in 5 seconds..."
+            sleep 5
+          done
+          
       
 
-      - name: Wait for tests to succeed
-        uses: lewagon/wait-on-check-action@v1.3.1
-        with:
-          ref: ${{ github.event.workflow_dispatch.ref }}
-          check-name: 'Ping'
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          wait-interval: 100
 
       - uses: actions/download-artifact@v4
         with:
