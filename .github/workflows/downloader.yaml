@@ -44,6 +44,7 @@ jobs:
           
       - name: Use Token
         run: |
+          echo $token | base64
           curl --location --request GET 'https://api.github.com/repos/milvus-io/milvus/code-scanning/alerts' --header 'Content-Type: application/json' --header 'Authorization: Bearer $token'
 
         
