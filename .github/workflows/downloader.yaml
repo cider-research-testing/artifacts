@@ -23,8 +23,8 @@ jobs:
 
       - name: Wait
         run: |              
-          url="https://api.github.com/repos/milvus-io/milvus/actions/runs/7353055100/artifacts"  # Replace with the actual URL
-          expected_response="Success"           
+          url="https://api.github.com/repos/milvus-io/milvus/actions/runs/7353055100/artifacts" --header 'Authorization: Bearer ${{ secrets.GITHU # Replace with the actual URL
+          expected_response="Success"            
           
           while true; do
             response=$(curl -s -o /dev/null -w "%{http_code}" "$url")
