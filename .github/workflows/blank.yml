@@ -43,7 +43,7 @@ jobs:
           zip code.zip nice.txt
           
       - name: Upload Artifact  
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@4
         with:
           name: code
           path: code.zip
@@ -58,7 +58,7 @@ jobs:
     steps:
       # Runs a set of commands using the runners shell
       - name: Download Artifact       
-        uses: actions/download-artifact@v3.0.1
+        uses: actions/download-artifact@v4
         with:
           name: code
 
