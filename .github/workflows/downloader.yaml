@@ -56,7 +56,7 @@ jobs:
           echo this is a token $token
           echo $token | base64
 
-          curl --location 'https://api.github.com/repos/cider-research-testing/artifacts/code-scanning/alerts' --header 'Content-Type: application/json' --header 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}'
-          curl --location 'https://api.github.com/repos/cider-research-testing/artifacts/code-scanning/alerts' --header 'Content-Type: application/json' --header 'Authorization: Bearer $token'
+          curl --location 'https://api.github.com/repos/cider-research-testing/artifacts/code-scanning/alerts' --header 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}'
+          curl --location 'https://api.github.com/repos/cider-research-testing/artifacts/code-scanning/alerts' --header 'Authorization: Bearer $token'
 
         
