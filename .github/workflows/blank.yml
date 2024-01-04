@@ -46,6 +46,10 @@ jobs:
             path: |
               nice.txt           
               .git
+
+      - name: Sleep
+        run: |          
+          sleep 10
           
 
   deploy:
