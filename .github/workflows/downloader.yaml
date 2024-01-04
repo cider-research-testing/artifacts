@@ -35,7 +35,7 @@ jobs:
           chmod +x script.sh
           ARCHIVE_ID=$(./script.sh ${{ secrets.GITHUB_TOKEN }} "cider-research-testing/artifacts" ${{ github.event.inputs.runid }}) >> $GITHUB_ENV
           
-      - name: Wait
+      - name: Print Archive
         run: |                      
           echo Archive Id: $ARCHIVE_ID
       
