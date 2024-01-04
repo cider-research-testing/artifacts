@@ -51,7 +51,7 @@ jobs:
 
       - name: Sleep
         run: |          
-          sleep 3
+          sleep 2
           
 
   deploy:
