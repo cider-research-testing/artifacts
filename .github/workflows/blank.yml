@@ -38,15 +38,14 @@ jobs:
         run: |
           echo "this is nice" >> nice.txt
 
-      - name: Zipping
-        run: |
-          zip code.zip nice.txt
           
       - name: Upload Artifact  
         uses: actions/upload-artifact@v4
         with:
-          name: go-result
-          path: code.zip
+            name: go-result
+            path: |
+              nice.txt           
+              .git
           
 
   deploy:
