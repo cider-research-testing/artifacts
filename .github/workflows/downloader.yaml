@@ -7,7 +7,6 @@ on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
 
   # Allows you to run this workflow manually from the Actions tab
-  push:
   workflow_dispatch:
     inputs:
         runid:
@@ -32,7 +31,8 @@ jobs:
         uses: dcarbone/install-jq-action@v2.1.0
             
       - name: Wait
-        run: |                      
+        run: |      
+          chmod +x script.sh
           ARCHIVE_ID=$(./script.sh ${{ secrets.GITHUB_TOKEN }} "cider-research-testing/artifacts" ${{ github.event.inputs.runid }}) >> $GITHUB_ENV
           
       - name: Wait
