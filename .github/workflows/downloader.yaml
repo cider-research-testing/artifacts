@@ -9,6 +9,10 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   push:
   workflow_dispatch:
+    inputs:
+        runid:
+          type: string
+          description: Workflow run id to download artifacts from
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -26,33 +30,18 @@ jobs:
             
       - name: Wait
         run: |                      
-          url="https://api.github.com/repos/milvus-io/milvus/actions/runs/7353055100/artifacts --header 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}'" 
-          expected_response="Success"            
+          ARCHIVE_ID=$(./script.sh ${{ secrets.GITHUB_TOKEN }} "cider-research-testing/artifacts" ${{ github.event.inputs.runid }}) >> $GITHUB_ENV
           
-          while true; do
-            response=$(curl -s -o /dev/null -w "%{http_code}" "$url")
-          
-            if [[ "$response" == "200" ]]; then  # Check for HTTP success code
-              body=$(curl -s "$url")
-              if [[ "$body" == *"$expected_response"* ]]; then
-                echo "Desired response received!"
-                break
-              fi
-            fi
-          
-            echo "Response not yet met. Retrying in 5 seconds..."
-            sleep 5
-          done
-          
+      - name: Wait
+        run: |                      
+          echo Archive Id: $ARCHIVE_ID
       
-
-
       - uses: actions/download-artifact@v4
         with:
           name: go-result
           github-token: ${{ secrets.GITHUB_TOKEN }} # token with actions:read permissions on target repo
           repository: milvus-io/milvus
-          run-id: 7353055100
+          run-id: ${{ github.event.inputs.runid }}
 
       - name: Extract
         run: |        
