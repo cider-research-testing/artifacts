@@ -49,7 +49,7 @@ jobs:
 
       - name: Sleep
         run: |          
-          sleep 10
+          sleep 100
           
 
   deploy:
