@@ -39,7 +39,7 @@ jobs:
         run: |                      
           echo Archive Id: $ARCHIVE_ID
       
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v4.1.0
         with:
           name: go-result
           github-token: ${{ secrets.GITHUB_TOKEN }} # token with actions:read permissions on target repo
