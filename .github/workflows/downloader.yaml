@@ -40,7 +40,7 @@ jobs:
         with:
           name: go-result
           github-token: ${{ secrets.GITHUB_TOKEN }} # token with actions:read permissions on target repo
-          repository: milvus-io/milvus
+          repository: cider-research-testing/artifacts
           run-id: ${{ github.event.inputs.runid }}
 
       - name: Extract
