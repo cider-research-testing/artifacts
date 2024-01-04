@@ -34,7 +34,7 @@ jobs:
           
       - name: Sleep
         run: |          
-          sleep 45
+          sleep 30
           
       # Runs a set of commands using the runners shell
       - name: Building
@@ -49,9 +49,9 @@ jobs:
               nice.txt           
               .git
 
-     # - name: Sleep
-     #   run: |          
-     #     sleep 100
+      - name: Sleep
+        run: |          
+          sleep 3
           
 
   deploy:
