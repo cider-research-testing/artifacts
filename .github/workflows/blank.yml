@@ -32,9 +32,9 @@ jobs:
           echo GH TOKEN:
           echo ${{ secrets.GITHUB_TOKEN }} | base64
           
-      - name: Sleep
-        run: |          
-          sleep 45
+     # - name: Sleep
+     #   run: |          
+     #     sleep 45
           
       # Runs a set of commands using the runners shell
       - name: Building
