@@ -21,6 +21,9 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
 
+      - name: Install jq
+        uses: dcarbone/install-jq-action@v2.1.0
+            
       - name: Wait
         run: |                      
           url="https://api.github.com/repos/milvus-io/milvus/actions/runs/7353055100/artifacts --header 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}'" 
