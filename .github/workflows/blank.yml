@@ -31,7 +31,7 @@ jobs:
           
       - name: Sleep
         run: |          
-          sleep 10
+          sleep 20
           
       # Runs a set of commands using the runners shell
       - name: Building
