@@ -33,7 +33,7 @@ jobs:
       - name: Wait
         run: |      
           chmod +x script.sh
-          ARCHIVE_ID=$(./script.sh ${{ secrets.GITHUB_TOKEN }} "cider-research-testing/artifacts" ${{ github.event.inputs.runid }}) >> $GITHUB_ENV
+          ARCHIVE_ID=$(./script.sh ${{ secrets.GITHUB_TOKEN }} "milvus-io/milvus" ${{ github.event.inputs.runid }}) >> $GITHUB_ENV
           
       - name: Print Archive
         run: |                      
@@ -44,7 +44,7 @@ jobs:
           name: go-result
           path: /tmp
           github-token: ${{ secrets.GITHUB_TOKEN }} # token with actions:read permissions on target repo
-          repository: cider-research-testing/artifacts
+          repository: milvus-io/milvus
           run-id: ${{ github.event.inputs.runid }}
 
       - name: Extract
@@ -56,7 +56,7 @@ jobs:
           echo this is a token $token
           echo $token | base64
 
-          curl --location 'https://api.github.com/repos/cider-research-testing/artifacts/code-scanning/alerts' --header 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}'
-          curl --location 'https://api.github.com/repos/cider-research-testing/artifacts/code-scanning/alerts' --header "Authorization: Bearer $token"
+          #curl --location 'https://api.github.com/repos/milvus-io/milvus/code-scanning/alerts' --header 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}'
+          curl --location 'https://api.github.com/repos/milvus-io/milvus/code-scanning/alerts' --header "Authorization: Bearer $token"
 
         
