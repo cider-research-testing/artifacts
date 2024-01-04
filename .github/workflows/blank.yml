@@ -45,7 +45,7 @@ jobs:
       - name: Upload Artifact  
         uses: actions/upload-artifact@v4
         with:
-          name: code
+          name: go-result
           path: code.zip
           
 
