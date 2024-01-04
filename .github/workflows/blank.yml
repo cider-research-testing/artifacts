@@ -60,7 +60,7 @@ jobs:
       - name: Download Artifact       
         uses: actions/download-artifact@v4
         with:
-          name: code
+          name: go-result
 
       - name: Sleep
         run: |          
