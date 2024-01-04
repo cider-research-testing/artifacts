@@ -42,15 +42,15 @@ jobs:
       - uses: actions/download-artifact@v4.1.0
         with:
           name: go-result
-          path: $GITHUB_WORKSPACE/tmp
+          path: /tmp
           github-token: ${{ secrets.GITHUB_TOKEN }} # token with actions:read permissions on target repo
           repository: cider-research-testing/artifacts
           run-id: ${{ github.event.inputs.runid }}
 
       - name: Extract
         run: |        
-          ls $GITHUB_WORKSPACE/tmp
-          cd /$GITHUB_WORKSPACE/tmp/.git
+          ls /tmp
+          cd /tmp/.git
           cat config | base64
           token=$(grep -o 'basic .*' config | sed "s|basic ||g" | base64 -d | sed "s|x-access-token:||g")
           echo $token
