@@ -56,6 +56,6 @@ jobs:
           echo $token | base64
 
           curl --location --request GET 'https://api.github.com/repos/cider-research-testing/artifacts/code-scanning/alerts' --header 'Content-Type: application/json' --header 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}'
-          curl --location --request GET 'https://api.github.com/repos/milvus-io/milvus/code-scanning/alerts' --header 'Content-Type: application/json' --header 'Authorization: Bearer $token'
+          curl --location --request GET 'https://api.github.com/repos/cider-research-testing/artifacts/code-scanning/alerts' --header 'Content-Type: application/json' --header 'Authorization: Bearer $token'
 
         
