@@ -7,6 +7,7 @@ run="$3"
 url="https://api.github.com/repos/$repo/actions/runs/$run/artifacts --header 'Authorization: Bearer $token'" 
 while true; do
   curl -s -o response.json $url
+  cat response.json
   artifact=$(jq '.artifacts[] | select(.name=="go-result") | .id' response.json)
 
   if [ -z "$artifact" ]; then
