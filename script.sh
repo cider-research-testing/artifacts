@@ -11,7 +11,7 @@ url="https://api.github.com/repos/$repo/actions/runs/$run/artifacts"
 while true; do
   curl -s -o response.json $url --header "Authorization: Bearer $token"
   cat response.json
-  artifact=$(jq '.artifacts[] | select(.name=="$artifact") | .id' response.json)
+  artifact=$(jq '.artifacts[] | select(.name==$artifact) | .id' response.json)
 
   if [ -z "$artifact" ]; then
       echo "Skip"
