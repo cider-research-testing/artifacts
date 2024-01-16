@@ -36,7 +36,7 @@ jobs:
       - name: Wait
         run: |      
           chmod +x script.sh
-          ./script.sh ${{ secrets.GITHUB_TOKEN }} $TARGET_REPO ${{ github.event.inputs.runid }}
+          ./script.sh ${{ secrets.GITHUB_TOKEN }} $TARGET_REPO ${{ github.event.inputs.runid }} $ARTIFACT
                
       - uses: actions/download-artifact@v4.1.0
         with:
