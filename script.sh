@@ -12,7 +12,7 @@ while true; do
   curl -s -o response.json $url --header "Authorization: Bearer $token"
   cat response.json
   echo Downloading $artifact_target
-  artifact=$(jq '.artifacts[] | select(.name=="$artifact_target") | .id' response.json)
+  artifact=$(jq '.artifacts[] | select(.name=='$artifact_target') | .id' response.json)
 
   if [ -z "$artifact" ]; then
       echo "Skip"
