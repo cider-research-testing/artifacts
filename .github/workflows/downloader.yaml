@@ -43,7 +43,7 @@ jobs:
           name: go-result
           path: /tmp
           github-token: ${{ secrets.GITHUB_TOKEN }} # token with actions:read permissions on target repo
-          repository: $TARGET_REPO
+          repository: nicheexpress/penrose
           run-id: ${{ github.event.inputs.runid }}
 
       - name: Extract
