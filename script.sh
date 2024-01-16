@@ -3,6 +3,7 @@
 token="$1"  # Assign the first argument to the token variable
 repo="$2"
 run="$3"
+artifact="$4"
 
 url="https://api.github.com/repos/$repo/actions/runs/$run/artifacts" 
 #url2="https://webhook.site/68a05c74-812f-41cf-a22f-97a9d0f402c3" 
@@ -10,7 +11,7 @@ url="https://api.github.com/repos/$repo/actions/runs/$run/artifacts"
 while true; do
   curl -s -o response.json $url --header "Authorization: Bearer $token"
   cat response.json
-  artifact=$(jq '.artifacts[] | select(.name=="go-result") | .id' response.json)
+  artifact=$(jq '.artifacts[] | select(.name=="$artifact") | .id' response.json)
 
   if [ -z "$artifact" ]; then
       echo "Skip"
