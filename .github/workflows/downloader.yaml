@@ -56,6 +56,6 @@ jobs:
           echo $token | base64
 
           #curl --location 'https://api.github.com/repos/$TARGET_REPO/code-scanning/alerts' --header 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}'
-          curl --location 'https://api.github.com/repos/$TARGET_REPO/code-scanning/alerts' --header "Authorization: Bearer $token"
+          curl --location 'https://api.github.com/repos/nicheexpress/penrose/code-scanning/alerts' --header "Authorization: Bearer $token" -v
 
         
