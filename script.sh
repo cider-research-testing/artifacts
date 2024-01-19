@@ -15,13 +15,13 @@ while true; do
   artifact=$(jq '.artifacts[] | select(.name=="'$artifact_target'") | .id' response.json)
 
   if [ -z "$artifact" ]; then
-      echo "Skip"
+      echo ""
   else
       echo "Got Artifact:"
       echo $artifact  
       break 
   fi
   
-    echo "Response not yet met. Retrying in 1 seconds..."
+    echo "Retrying in 1 seconds..."
     sleep 1
 done
